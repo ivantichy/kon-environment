@@ -36,4 +36,45 @@ iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 22 -j ACCEPT
 -A PREROUTING -p tcp -m tcp --dport 23 -j DNAT --to-destination 192.168.122.128:22
 
 
+#!/bin/bash
+#host
 
+apt-get install fail2ban -y
+
+
+iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 22 -j ACCEPT
+iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 22 -j ACCEPT
+
+iptables -t nat -I PREROUTING -p tcp -m tcp --dport 23 -j DNAT --to-destination 192.168.122.128:22
+
+
+iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 8080 -j ACCEPT
+iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 8080 -j ACCEPT
+
+iptables -t nat -I PREROUTING -p tcp -m tcp --dport 8080 -j DNAT --to-destination 192.168.122.128:8080
+dpkg-reconfigure tzdata
+
+
+######################################
+
+
+#!/bin/bash
+#kvm
+
+apt-get install fail2ban -y
+
+useradd -u 1000 -m jenkins
+
+# copy /var/docker-data
+# install docker
+
+chown -R jenkins:jenkins /var/docker-data/jenkins-home/
+
+# edit  /lib/systemd/system/docker.service
+#  -H 192.168.122.128:4243
+
+systemctl daemon-reload
+service docker restart
+dpkg-reconfigure tzdata
+
+#######################
