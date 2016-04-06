@@ -1,0 +1,39 @@
+
+useradd -u 5000 ns1
+
+Enable user namespaces in /etc/default/docker:
+DOCKER_OPTS="--userns-remap=ns1"
+
+
+For some reason, in debian 8 and ubuntu 15.01 systemd is skipping the execution of /etc/default/docker.
+
+How to fix?
+Edit file /lib/systemd/system/docker.service
+
+...
+[Service]
+ExecStart=/usr/bin/docker -d -H fd:// $DOCKER_OPTS
+...
+EnvironmentFile=-/etc/default/docker
+...
+Then execute
+
+systemctl daemon-reload
+systemctl restart docker
+
+#useradd --uid 1000 -M jenkins
+
+# usermod -G docker jenkins
+
+https://kb.vpsfree.cz/navody/vps/kvm
+
+apt-get install fail2ban
+
+
+iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 22 -j ACCEPT
+iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 22 -j ACCEPT
+
+-A PREROUTING -p tcp -m tcp --dport 23 -j DNAT --to-destination 192.168.122.128:22
+
+
+
