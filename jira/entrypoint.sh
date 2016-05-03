@@ -55,10 +55,10 @@ cd /var/atlassian/jira-app/bin
 ./start-jira.sh
 
 
-trap "/var/atlassian/jira-app/bin/stop-jira.sh; service postgresql stop; echo \"Correctly stopped.\"; echo ok > /var/atlassian/jira-app/ok; exit 0" SIGINT SIGTERM
+trap "/var/atlassian/jira-app/bin/stop-jira.sh; service postgresql stop; echo \"Correctly stopped.\"; exit 0" SIGINT SIGTERM
 
 while :
 do
-        sleep 60
+        sleep 1
 done
 
