@@ -13,5 +13,19 @@ iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 22 -j ACCEPT
 iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 22 -j ACCEPT
 iptables -t nat -I PREROUTING  -i venet0 -p tcp -m tcp --dport 23 -j DNAT --to-destination 192.168.122.128:22
 
+iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 6000 -j ACCEPT
+iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 6000 -j ACCEPT
+iptables -t nat -I PREROUTING -i venet0 -p tcp -m tcp --dport 6000 -j DNAT --to-destination 192.168.122.128:6000
+
+iptables -I FORWARD -i virbr0 -p udp -m udp --sport 6000 -j ACCEPT
+iptables -I FORWARD -o virbr0 -p udp -m udp --dport 6000 -j ACCEPT
+iptables -t nat -I PREROUTING -i venet0 -p udp -m udp --dport 6000 -j DNAT --to-destination 192.168.122.128:6000
+
+
+iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 6001 -j ACCEPT
+iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 6001 -j ACCEPT
+iptables -t nat -I PREROUTING -i venet0 -p tcp -m tcp --dport 6001 -j DNAT --to-destination 192.168.122.128:6001
+
+
 
 
