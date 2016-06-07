@@ -1,0 +1,9 @@
+git@wedos:/var/git/hooks$ cat post-update
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+
+curl -X GET "http://127.0.0.1:8082/buildByToken/build?job=Build%20Master&token=buildmaster" -v -f
