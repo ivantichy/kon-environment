@@ -25,6 +25,14 @@ systemctl restart docker
 
 # usermod -G docker jenkins
 
+ip forward
+
+iptables
+
+startall.sh
+
+dropbox host auth
+
 https://kb.vpsfree.cz/navody/vps/kvm
 
 apt-get install fail2ban
