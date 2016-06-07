@@ -1,6 +1,11 @@
 
 #!/bin/bash
 #author Ivan Tichy
+
+
+#crontab
+#0 4 5 * * /root/lecert.sh >> /var/log/lecert.log 2>&1
+
 #Please modify these values according to your environment
 certdir=/etc/letsencrypt/live/jira.ivantichy.cz/ #just replace the domain name after /live/
 keytooldir=/opt/atlassian/jira/jre/bin/ #java keytool located in jre/bin
