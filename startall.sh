@@ -7,7 +7,7 @@ docker run -d -h dropbox --name dropbox -v /var/docker-data/Dropbox/config:/root
 
 docker run --name tor -p 6000-6001:6000-6001 -d ivantichy/tor
 
-docker run -p 8082:8080 -p 50000:50000 -v /var/docker-data/jenkins-home:/var/jenkins_home ivantichy/kon-jenkins
+docker run -p 8082:8080 -p 50000:50000 -d -v /var/docker-data/jenkins-home:/var/jenkins_home ivantichy/kon-jenkins
 
 
 
