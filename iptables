@@ -7,7 +7,7 @@ iptables -t nat -I PREROUTING -i venet0 -p tcp -m tcp --dport 80 -j DNAT --to-de
 
 iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 8080 -j ACCEPT
 iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 8080 -j ACCEPT
-iptables -t nat -I PREROUTING  -i venet0 -p tcp -m tcp --dport 8080 -j DNAT --to-destination 192.168.122.128:
+iptables -t nat -I PREROUTING  -i venet0 -p tcp -m tcp --dport 8080 -j DNAT --to-destination 192.168.122.128:8080
 
 iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 8082 -j ACCEPT
 iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 8082 -j ACCEPT
