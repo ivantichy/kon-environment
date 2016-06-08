@@ -25,6 +25,9 @@ systemctl restart docker
 
 # usermod -G docker jenkins
 
+TOMCAT: proxyName="jira.ivantichy.cz" proxyPort="80"
+
+
 ip forward
 
 iptables
