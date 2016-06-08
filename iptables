@@ -4,15 +4,9 @@ iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 80 -j ACCEPT
 iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 80 -j ACCEPT
 iptables -t nat -I PREROUTING -i venet0 -p tcp -m tcp --dport 80 -j DNAT --to-destination 192.168.122.128:80
 
-
-iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 8080 -j ACCEPT
-iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 8080 -j ACCEPT
-iptables -t nat -I PREROUTING  -i venet0 -p tcp -m tcp --dport 8080 -j DNAT --to-destination 192.168.122.128:8080
-
-iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 8082 -j ACCEPT
-iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 8082 -j ACCEPT
-iptables -t nat -I PREROUTING  -i venet0 -p tcp -m tcp --dport 8082 -j DNAT --to-destination 192.168.122.128:8082
-
+iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 443 -j ACCEPT
+iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 443 -j ACCEPT
+iptables -t nat -I PREROUTING  -i venet0 -p tcp -m tcp --dport 443 -j DNAT --to-destination 192.168.122.128:443
 
 iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 22 -j ACCEPT
 iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 22 -j ACCEPT
@@ -21,11 +15,6 @@ iptables -t nat -I PREROUTING  -i venet0 -p tcp -m tcp --dport 23 -j DNAT --to-d
 iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 6000 -j ACCEPT
 iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 6000 -j ACCEPT
 iptables -t nat -I PREROUTING -i venet0 -p tcp -m tcp --dport 6000 -j DNAT --to-destination 192.168.122.128:6000
-
-iptables -I FORWARD -i virbr0 -p udp -m udp --sport 6000 -j ACCEPT
-iptables -I FORWARD -o virbr0 -p udp -m udp --dport 6000 -j ACCEPT
-iptables -t nat -I PREROUTING -i venet0 -p udp -m udp --dport 6000 -j DNAT --to-destination 192.168.122.128:6000
-
 
 iptables -I FORWARD -i virbr0 -p tcp -m tcp --sport 6001 -j ACCEPT
 iptables -I FORWARD -o virbr0 -p tcp -m tcp --dport 6001 -j ACCEPT
