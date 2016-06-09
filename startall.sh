@@ -9,7 +9,7 @@ docker run --name tor -p 6000-6001:6000-6001 -d ivantichy/tor
 
 docker run -p 8082:8080 -p 50000:50000 -d -v /var/docker-data/jenkins-home:/var/jenkins_home ivantichy/kon-jenkins
 
-docker run -d -p 80:80 -p 443:443 ivantichy/kon-test-proxy
+docker run -d -p 80:80 -p 443:443 -v /var/docker-data/letsencrypt/:/etc/letsencrypt/ ivantichy/kon-test-proxy
 
 
 
