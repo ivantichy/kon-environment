@@ -8,7 +8,7 @@ function getfromgit {
   mkdir -p $installdir/$1
   cd $installdir/$1
   git init
-  git remote add origin https://github.com/ivantichy/$1.git
+  git remote add origin https://github.com/ivantichy/$1-docker.git 2> /dev/null
   git pull origin master
 }
 
@@ -27,7 +27,8 @@ function runit {
 }
 
 function stopit {
-  $workdir/ds $1
+  $workdir/ds.sh $1
+  docker rm $1 2>/dev/null
 }
 
 stopit jira
@@ -36,14 +37,12 @@ stopit tor
 stopit kon-dropbox-backup
 stopit jenkins
 
-getfromgit jira-docker
-getfromgit kon-test-proxy-docker
+getfromgit jira
+getfromgit kon-test-proxy
 getfromgit tor
-getfromgit kon-dropbox-backup-docker
-getfromgit jenkins-docker
+getfromgit kon-dropbox-backup
+getfromgit jenkins
 
-
-exit
 
 #getfromdockerhub jira
 #getfromdockerhub kon-test-proxy
@@ -57,11 +56,14 @@ buildit tor
 buildit kon-dropbox-backup
 buildit jenkins
 
-runit jira-docker
-runit kon-test-proxy-docker
+runit jira
+runit kon-test-proxy
 runit tor
-runit kon-dropbox-backup-docker
-runit jenkins-docker
+runit kon-dropbox-backup
+runit jenkins
+
+$workdir/clean.sh 2> /dev/null
+
 
 
 
