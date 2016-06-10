@@ -27,6 +27,7 @@ systemctl restart docker
 
 TOMCAT: proxyName="jira.ivantichy.cz" proxyPort="80"
 
+git config credential.helper store
 
 ip forward
 
