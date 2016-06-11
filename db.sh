@@ -2,7 +2,7 @@
 
 
 if [ "$1" == "" ]; then
-echo "dnf"
+echo "empy parameter"
 exit 1
 fi
 

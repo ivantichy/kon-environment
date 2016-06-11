@@ -5,5 +5,3 @@ cp ./ds.sh /usr/bin/ds
 cp ./db.sh /usr/bin/db
 cp ./dp.sh /usr/bin/dp
 
-
-
