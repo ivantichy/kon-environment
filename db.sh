@@ -2,6 +2,7 @@
 
 
 if [ "$1" == "" ]; then
+echo "dnf"
 exit 1
 fi
 

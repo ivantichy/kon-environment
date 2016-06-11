@@ -2,17 +2,20 @@
 
 
 if [ "$1" == "" ]; then
- exit 1
+  echo "missing paramater"
+  exit 1
 fi
 
 if [ "`docker ps | grep $1 -c`" == "0" ]; then
- exit 2
+  echo "did not found container like this"
+  exit 2
 fi
 
 
 
-
+echo "stopping"
 docker stop `docker ps | grep $1 | cut -d " " -f1`
+echo "stopped"
 
 
 

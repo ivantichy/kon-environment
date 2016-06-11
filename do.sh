@@ -62,7 +62,7 @@ runit tor
 runit kon-dropbox-backup
 runit jenkins
 
-$workdir/clean.sh 2> /dev/null
+$workdir/dc.sh 2> /dev/null
 
 
 
