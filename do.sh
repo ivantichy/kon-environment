@@ -8,7 +8,7 @@ function getfromgit {
   mkdir -p $installdir/$1
   cd $installdir/$1
   git init
-  git remote add origin https://github.com/ivantichy/$1-docker.git 2> /dev/null
+  git remote add origin git@github.com:ivantichy/$1-docker.git 2> /dev/null
   git pull origin master
 }
 
