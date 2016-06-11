@@ -7,7 +7,7 @@ if [ "$1" == "" ]; then
 fi
 
 if [ "`docker ps | grep $1 -c`" == "0" ]; then
-  echo "did not found container like this"
+  echo "did not find container like this"
   exit 2
 fi
 
