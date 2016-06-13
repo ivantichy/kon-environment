@@ -37,6 +37,7 @@ COMMIT
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [184:17702]
 :fail2ban-ssh - [0:0]
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -p tcp -m multiport --dports 22 -j fail2ban-ssh
 -A INPUT -i virbr0 -p udp -m udp --dport 53 -j ACCEPT
 -A INPUT -i virbr0 -p tcp -m tcp --dport 53 -j ACCEPT
@@ -47,6 +48,7 @@ COMMIT
 -A INPUT -p tcp --dport 22 -j ACCEPT
 -A INPUT -i virbr0 -j ACCEPT
 -A INPUT -j DROP
+-A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A FORWARD -d 192.168.122.0/24 -o virbr0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A FORWARD -o virbr0 -p tcp -m tcp --dport 443 -j ACCEPT
 -A FORWARD -i virbr0 -p tcp -m tcp --sport 443 -j ACCEPT
