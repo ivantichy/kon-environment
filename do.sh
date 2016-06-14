@@ -36,13 +36,14 @@ stopit kon-test-proxy
 stopit tor
 stopit kon-dropbox-backup
 stopit jenkins
+stopit exim
 
 getfromgit jira
 getfromgit kon-test-proxy
 getfromgit tor
 getfromgit kon-dropbox-backup
 getfromgit jenkins
-
+getfromgit exim
 
 #getfromdockerhub jira
 #getfromdockerhub kon-test-proxy
@@ -55,12 +56,14 @@ buildit kon-test-proxy
 buildit tor
 buildit kon-dropbox-backup
 buildit jenkins
+buildit exim
 
 runit jira
 runit kon-test-proxy
 runit tor
 runit kon-dropbox-backup
 runit jenkins
+runit exim
 
 $workdir/dc.sh 2> /dev/null
 
