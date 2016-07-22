@@ -90,3 +90,7 @@ service docker restart
 dpkg-reconfigure tzdata
 
 #######################
+
+
+socat "UNIX-LISTEN:/var/docker-data/jenkins-home/docker.sock,reuseaddr,fork" "UNIX-CONNECT:/var/run/docker.sock" &
+
