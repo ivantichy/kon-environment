@@ -35,14 +35,14 @@ stopit jira
 stopit kon-test-proxy
 stopit tor
 stopit kon-dropbox-backup
-stopit jenkins
+stopit kon-jenkins
 stopit exim
 
 getfromgit jira
 getfromgit kon-test-proxy
 getfromgit tor
 getfromgit kon-dropbox-backup
-getfromgit jenkins
+getfromgit kon-jenkins
 getfromgit exim
 
 #getfromdockerhub jira
@@ -58,10 +58,7 @@ buildit kon-dropbox-backup
 buildit jenkins
 buildit exim
 
-killall socat
-rm -rf /var/docker-data/jenkins-home/docker.sock
-socat "UNIX-LISTEN:/var/docker-data/jenkins-home/docker.sock,reuseaddr,fork" "UNIX-CONNECT:/var/run/docker.sock" &
-chown jenkins:jenkins /var/docker-data/jenkins-home/docker.sock
+./jenkins-socat.sh
 
 runit jira
 runit kon-test-proxy
