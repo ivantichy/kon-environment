@@ -101,3 +101,7 @@ dpkg-reconfigure tzdata
 socat "UNIX-LISTEN:/var/docker-data/jenkins-home/docker.sock,reuseaddr,fork" "UNIX-CONNECT:/var/run/docker.sock" &
 chown jenkins:jenkins /var/docker-data/jenkins-home/docker.sock
 
+
+vi /etc/default/grub
+GRUB_CMDLINE_LINUX="console=ttyS0"
+update-grub
