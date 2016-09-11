@@ -55,7 +55,7 @@ buildit jira
 buildit kon-test-proxy
 buildit tor
 buildit kon-dropbox-backup
-buildit jenkins
+buildit kon-jenkins
 buildit exim
 
 ./jenkins-socat.sh
@@ -64,7 +64,7 @@ runit jira
 runit kon-test-proxy
 runit tor
 runit kon-dropbox-backup
-runit jenkins
+runit kon-jenkins
 runit exim
 
 $workdir/dc.sh 2> /dev/null
