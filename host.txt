@@ -105,3 +105,5 @@ chown jenkins:jenkins /var/docker-data/jenkins-home/docker.sock
 vi /etc/default/grub
 GRUB_CMDLINE_LINUX="console=ttyS0"
 update-grub
+
+ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
